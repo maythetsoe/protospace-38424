@@ -33,11 +33,11 @@ end
 
 def edit
   @prototype = Prototype.find(params[:id])
-  # if @prototype.save  
-  # redirect_to prototype_path unless current_user.id == @prototype.user_id
-  # else
-  #   render :index
-  # end
+  if @prototype.save  
+  redirect_to prototype_path unless current_user.id == @prototype.user_id
+  else
+    render :index
+  end
   end
 
 def update

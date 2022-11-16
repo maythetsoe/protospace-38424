@@ -33,10 +33,10 @@ end
 
 def edit
   @prototype = Prototype.find(params[:id])
-  if @prototype.save  
-  redirect_to prototype_path unless current_user.id == @prototype.user_id
+  if user_signed_in? && current_user.id == @prototype.user_id 
+    redirect_to prototype_path  unless current_user.id == @prototype.user_id
   else
-    render :index
+    redirect_to root_path
   end
   end
 
